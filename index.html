@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atlas Mondial Interactif</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+
+    <header class="site-header">
+      <nav class="nav-inner" aria-label="Navigation principale">
+        <div class="nav-brand">
+          <span class="brand-icon" aria-hidden="true">🌍</span>
+          <span class="brand-name">World Atlas</span>
+        </div>
+        <ul class="nav-links" role="list">
+          <li><a href="#" class="nav-link nav-link--active">Accueil</a></li>
+          <li><a href="#" class="nav-link">Pays</a></li>
+          <li><a href="#" class="nav-link">Régions</a></li>
+          <li><a href="#" class="nav-link">Carte</a></li>
+          <li><a href="#" class="nav-link">À propos</a></li>
+        </ul>
+        <span class="nav-globe" aria-hidden="true">🌐</span>
+      </nav>
+    </header>
+
+    <main class="main-content" id="main">
+
+      <section class="search-section" aria-labelledby="search-heading">
+        <p class="search-eyebrow">Explorez le monde</p>
+        <h1 class="search-heading" id="search-heading">
+          Prêt à commencer<br />votre <em>voyage</em> ?
+        </h1>
+        <p class="search-sub">
+          Entrez le nom d'un pays pour obtenir sa carte d'identité complète.
+        </p>
+
+        <form class="search-form" id="searchForm" novalidate>
+          <div class="input-wrapper">
+            <label for="countryInput" class="sr-only">Nom du pays</label>
+            <span class="input-icon" aria-hidden="true">🔍</span>
+            <input
+              type="text"
+              id="countryInput"
+              name="country"
+              class="search-input"
+              placeholder="Ex : Haiti, France, Japan…"
+              autocomplete="off"
+              autocorrect="off"
+              spellcheck="false"
+            />
+            <button type="submit" class="search-btn" aria-label="Rechercher ce pays">
+              Rechercher
+            </button>
+          </div>
+          <p
+            id="inputError"
+            class="input-error"
+            role="alert"
+            aria-live="polite"
+            hidden
+          ></p>
+        </form>
+      </section>
+
+      
+      <section
+        class="results-section"
+        id="resultsSection"
+        aria-label="Résultats de la recherche"
+      >
+
+        <div
+          class="loader"
+          id="loader"
+          hidden
+          aria-live="polite"
+          aria-label="Chargement en cours"
+        >
+          <div class="spinner" aria-hidden="true"></div>
+          <p class="loader-text">Chargement des données…</p>
+        </div>
+
+        <article
+          class="country-card"
+          id="countryCard"
+          hidden
+          aria-label="Carte d'identité du pays"
+        >
+          <a href="#" class="back-link" id="backLink" aria-label="Retour">
+            ← Retour
+          </a>
+
+          <div class="card-layout">
+            <!-- Drapeau -->
+            <div class="flag-col">
+              <img
+                id="flagImg"
+                class="flag-img"
+                src=""
+                alt=""
+                loading="lazy"
+              />
+            </div>
+
+            <div class="info-col">
+              <h2 class="country-name" id="countryName"></h2>
+
+              <ul class="info-list" role="list">
+                <li class="info-row">
+                  <span class="info-icon" aria-hidden="true">🏛</span>
+                  <span class="info-label">Nom</span>
+                  <span class="info-value" id="infoName"></span>
+                </li>
+                <li class="info-row">
+                  <span class="info-icon" aria-hidden="true">📍</span>
+                  <span class="info-label">Capitale</span>
+                  <span class="info-value" id="infoCapital"></span>
+                </li>
+                <li class="info-row">
+                  <span class="info-icon" aria-hidden="true">👥</span>
+                  <span class="info-label">Population</span>
+                  <span class="info-value" id="infoPopulation"></span>
+                </li>
+                <li class="info-row">
+                  <span class="info-icon" aria-hidden="true">🌐</span>
+                  <span class="info-label">Région</span>
+                  <span class="info-value" id="infoRegion"></span>
+                </li>
+                <li class="info-row">
+                  <span class="info-icon" aria-hidden="true">💰</span>
+                  <span class="info-label">Monnaie</span>
+                  <span class="info-value" id="infoCurrency"></span>
+                </li>
+                <li class="info-row">
+                  <span class="info-icon" aria-hidden="true">💬</span>
+                  <span class="info-label">Langues</span>
+                  <span class="info-value" id="infoLanguages"></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <div
+          class="api-error"
+          id="apiError"
+          hidden
+          role="alert"
+          aria-live="assertive"
+        >
+          <span class="error-icon" aria-hidden="true">⚠️</span>
+          <p class="error-text" id="apiErrorText"></p>
+        </div>
+
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        Données fournies par
+        <a href="https://restcountries.com" target="_blank" rel="noopener">REST Countries API v5</a>
+      </p>
+    </footer>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
